@@ -2,8 +2,8 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Reģistrēšanās</title>
+    <meta name=viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reģistrēšanās </title>
     <link rel="stylesheet" href="css/reg.css">
     <link rel="icon" type="image/x-icon" href="bildes/logo.png">
 
