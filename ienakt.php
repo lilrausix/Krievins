@@ -1,3 +1,11 @@
+<?php require("login.class.php")?>
+<?php 
+  if(isset($_POST['submit'])){
+    $user = new LoginUser($_POST['username'], $_POST['password']);
+  }
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -35,17 +43,20 @@
 
     <div class="wrapper">
     <h2>Ienākt</h2>
-    <form action="#">
+    <form action="" method="post" enctype="multipart/form-data" autocompleate="off">
       <div class="input-box">
-        <input type="text" placeholder="lietotājvārds" required>
+        <input type="text" name="username" placeholder="lietotājvārds" required>
       </div>
 
       <div class="input-box">
-        <input type="password" placeholder="parole" required>
+        <input type="password" name="password" placeholder="parole" required>
       </div>
       <div class="input-box button">
-        <input type="Submit" value="Ienākt">
+        <input type="Submit" name="submit" value="Ienākt">
       </div>
+
+      <p class="error"><?php echo @$user->error ?></p>
+    <p class="success"><?php echo @$user->success ?></p>
       
     </form>
   </div>

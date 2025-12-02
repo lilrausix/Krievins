@@ -1,3 +1,11 @@
+<?php require("register.class.php")?>
+<?php 
+  if(isset($_POST['submit'])){
+    $user = new RegisterUser($_POST['username'], $_POST['password']);
+  }
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -35,29 +43,25 @@
 
     <div class="wrapper">
     <h2>Reģistrēšanās</h2>
-    <form action="#">
+    <form action="" method="post" enctype="multipart/form-data" autocompleate="off">
       <div class="input-box">
-        <input type="text" placeholder="Ievadi savu lietotājvārdu" required>
+        <input type="text" name="username" placeholder="Ievadi savu lietotājvārdu" required>
       </div>
       <div class="input-box">
-        <input type="text" placeholder="Ievadi savu epastu" required>
-      </div>
-      <div class="input-box">
-        <input type="password" placeholder="Izveido paroli" required>
-      </div>
-      <div class="input-box">
-        <input type="password" placeholder="Apstiprini  paroli" required>
+        <input type="password" name="password" placeholder="Izveido paroli" required>
       </div>
       <div class="policy">
         <input type="checkbox">
         <h3>Es piekrītu visiem noteikumiem un nosacījumiem</h3>
       </div>
       <div class="input-box button">
-        <input type="Submit" value="Reģistrēties tagad">
+        <input type="Submit" name="submit" value="Reģistrēties tagad">
       </div>
       <div class="text">
         <h3>Tev jau ir konts? <a href="ienakt.php">Ieiet</a></h3>
       </div>
+    <p class="error"><?php echo @$user->error ?></p>
+    <p class="success"><?php echo @$user->success ?></p>
     </form>
   </div>
     
