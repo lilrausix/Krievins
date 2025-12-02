@@ -16,7 +16,7 @@
         <img src="bildes/logo.png" alt="PB logo" style="width:50px; height:auto;">
         </div>
         <div class="pogas">
-        <a href="sakums.php">
+        <a href="index.php">
             <button type="button">Sākums</button>
         </a>
         <a href="parmums.php">
