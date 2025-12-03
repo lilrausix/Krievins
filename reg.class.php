@@ -5,19 +5,19 @@ class RegisterUser{
     private $encrypted_password;
     public $error;
     public $success;
-    private $storage = "data.json";
-    private $stored_users;
+    private $storage = "datafolderis/data.json";
+    private $stored_users = [];
     private $new_user;
 
 
     public function __construct($username, $password){
-        $this->username = trim($this->username);
-        $this->username = filter_var($username, FILTER_SANITIZE_STRING);
+        $this->username = trim($username);
+        $this->username = filter_var($this->username, FILTER_SANITIZE_FULL_SPECIAL_CHARS);
 
-        $this->raw_password = filter_var(trim($password), FILTER_SANITIZE_STRING);
+        $this->raw_password = filter_var(trim($password), FILTER_SANITIZE_FULL_SPECIAL_CHARS);
         $this->encrypted_password = password_hash($this->raw_password, PASSWORD_DEFAULT);
 
-        $this->stored_users = jsnon_decode(file_get_contents($this->storage),true );
+         $this->stored_users = json_decode(file_get_contents($this->storage), true);
     
         $this->new_user = [
             "username" => $this->username,
@@ -40,7 +40,7 @@ class RegisterUser{
         }
     }
 
-    private funtion usernameExists(){
+    private function usernameExists(){
         foreach($this->stored_users as $user){
             if($this->username == $user['username']){
                 $this->error = "Lietotājvārds jau eksistē!";
@@ -48,7 +48,8 @@ class RegisterUser{
             }
         }
         return false;}
-    }
+    
+
 
     private function insertUser(){
         if($this->usernameExists() == FALSE){
@@ -61,5 +62,5 @@ class RegisterUser{
         }
     }
 
-
+}
 ?>

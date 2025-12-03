@@ -1,4 +1,4 @@
-<?php require("register.class.php")?>
+<?php require("reg.class.php")?>
 <?php 
   if(isset($_POST['submit'])){
     $user = new RegisterUser($_POST['username'], $_POST['password']);

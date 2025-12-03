@@ -1,4 +1,4 @@
-<?php require("login.class.php")?>
+<?php require("ienakt.class.php")?>
 <?php 
   if(isset($_POST['submit'])){
     $user = new LoginUser($_POST['username'], $_POST['password']);
